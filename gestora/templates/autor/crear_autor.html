@@ -1,0 +1,131 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-header bg-dark text-white fw-bold py-3">Crear autor</div>
+      <div class="card-body p-4">
+        <form method="POST" novalidate>
+          {% csrf_token %}
+
+          <div class="mb-3">
+            <label
+              for="{{ form.nombre.id_for_label }}"
+              class="form-label fw-semibold text-secondary"
+            >
+              {{ form.nombre.label }}
+            </label>
+            <input
+              type="text"
+              name="{{ form.nombre.name }}"
+              id="{{ form.nombre.id_for_label }}"
+              class="form-control {% if form.nombre.errors %}is-invalid{% endif %}"
+              placeholder="Escriba el nombre"
+              value="{{ form.nombre.value|default:'' }}"
+            />
+            {% if form.nombre.errors %}
+            <div class="invalid-feedback">
+              {{ form.nombre.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+
+          <div class="mb-3">
+            <label
+              for="{{ form.apellido.id_for_label }}"
+              class="form-label fw-semibold text-secondary"
+            >
+              {{ form.apellido.label }}
+            </label>
+            <input
+              type="text"
+              name="{{ form.apellido.name }}"
+              id="{{ form.apellido.id_for_label }}"
+              class="form-control {% if form.apellido.errors %}is-invalid{% endif %}"
+              placeholder="Escriba el apellido"
+              value="{{ form.apellido.value|default:'' }}"
+            />
+            {% if form.apellido.errors %}
+            <div class="invalid-feedback">
+              {{ form.apellido.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+
+          <div class="mb-3">
+            <label
+              for="{{ form.sexo.id_for_label }}"
+              class="form-label fw-semibold text-secondary"
+            >
+              {{ form.sexo.label }}
+            </label>
+            <select
+              name="{{ form.sexo.name }}"
+              id="{{ form.sexo.id_for_label }}"
+              class="form-select {% if form.sexo.errors %}is-invalid{% endif %}"
+            >
+              {% for value, text in form.sexo.field.choices %}
+              <option
+                value="{{ value }}"
+                {%
+                if
+                form.sexo.value=""
+                ="value"
+                %}selected{%
+                endif
+                %}
+              >
+                {{ text }}
+              </option>
+              {% endfor %}
+            </select>
+            {% if form.sexo.errors %}
+            <div class="invalid-feedback">{{ form.sexo.errors|striptags }}</div>
+            {% endif %}
+          </div>
+
+          <div class="mb-3">
+            <label
+              for="{{ form.nacionalidad.id_for_label }}"
+              class="form-label fw-semibold text-secondary"
+            >
+              {{ form.nacionalidad.label }}
+            </label>
+            <select
+              name="{{ form.nacionalidad.name }}"
+              id="{{ form.nacionalidad.id_for_label }}"
+              class="form-select {% if form.nacionalidad.errors %}is-invalid{% endif %}"
+            >
+              {% for value, text in form.nacionalidad.field.choices %}
+              <option
+                value="{{ value }}"
+                {%
+                if
+                form.nacionalidad.value=""
+                ="value"
+                %}selected{%
+                endif
+                %}
+              >
+                {{ text }}
+              </option>
+              {% endfor %}
+            </select>
+            {% if form.nacionalidad.errors %}
+            <div class="invalid-feedback">
+              {{ form.nacionalidad.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+
+          <div class="d-flex justify-content-end gap-2 mt-4">
+            <a href="/autor/lista/" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-success fw-bold">
+              Guardar Autor
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

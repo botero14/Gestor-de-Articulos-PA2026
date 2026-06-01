@@ -1,6 +1,11 @@
 {% extends "base.html" %} {% block content %}
 <div class="container mt-4">
-  <h2 class="mb-4 text-dark fw-bold">Autores Registrados</h2>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-dark fw-bold mb-0"> Autores Registrados</h2>
+    <a href="/autor/crear/" class="btn btn-dark fw-bold shadow-sm">
+      Agregar Autor</a
+    >
+  </div>
 
   <div class="table-responsive shadow-sm rounded">
     <table class="table table-hover table-striped align-middle mb-0">
@@ -8,27 +13,61 @@
         <tr>
           <th scope="col" class="ps-3">ID</th>
           <th scope="col">Nombre</th>
-          <th scope="col" class="pe-3">Apellido</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Sexo</th>
+          <th scope="col">País / Nacionalidad</th>
+          <th scope="col">Fecha de Creación</th>
+          <th scope="col" class="text-center pe-3">Acciones</th>
         </tr>
       </thead>
       <tbody>
         {% for autor in autores %}
         <tr>
-          <td class="fw-semibold ps-3">{{ autor.id_autor }}</td>
+          <td class="fw-semibold ps-3 text-secondary">{{ autor.id_autor }}</td>
           <td>{{ autor.nombre }}</td>
-          <td class="pe-3">{{ autor.apellido }}</td>
+          <td>{{ autor.apellido }}</td>
+
+          <td>{{ autor.get_sexo_display }}</td>
+
+          <td>
+            <span class="fw-medium text-dark"
+              >{{ autor.nacionalidad.name }}</span
+            >
+          </td>
+
+          <td class="text-muted small">
+            {{ autor.creado_en|date:"d \d\e F \d\e Y" }}
+          </td>
+
+          <td class="text-center pe-3">
+            <a
+              href="/autor/editar/{{ autor.id_autor }}/"
+              class="btn btn-warning btn-sm me-1 fw-medium shadow-sm"
+            >
+              Editar
+            </a>
+            <a
+              href="/autor/eliminar/{{ autor.id_autor }}/"
+              class="btn btn-danger btn-sm fw-medium shadow-sm"
+            >
+              Eliminar
+            </a>
+          </td>
         </tr>
         {% empty %}
         <tr>
-          <td colspan="3" class="text-center text-muted py-4">
-            <i class="bi bi-info-circle me-2"></i>No hay autores registrados.
+          <td colspan="7" class="text-center text-muted py-4">
+            <i class="bi bi-info-circle me-2"></i>No hay autores registrados en
+            el sistema.
           </td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
-    <hr />
-    <a href="{% url 'index' %}" class="btn btn-dark">Volver al inicio</a>
+  </div>
+
+  <div class="mt-4">
+    <a href="/" class="btn btn-dark shadow-sm">Volver al inicio</a>
   </div>
 </div>
 {% endblock %}
