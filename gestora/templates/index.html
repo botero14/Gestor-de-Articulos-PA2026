@@ -1,0 +1,86 @@
+{% extends "base.html" %} {% block content %}
+<div class="container my-5">
+  <div
+    class="p-5 mb-5 bg-light border rounded-3 shadow-sm text-center text-md-start"
+  >
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <h1 class="display-5 fw-bold text-dark mb-3">
+          Gestión Cultural de Autores
+        </h1>
+        <p class="col-md-11 fs-5 text-muted">
+          Bienvenido a la plataforma centralizada para la administración,
+          registro y seguimiento de autores. Un espacio diseñado para optimizar
+          el control de perfiles académicos, literarios e institucionales de
+          manera ágil y ordenada.
+        </p>
+        <a href="/autor/lista/" class="btn btn-dark btn-lg px-4 mt-3 shadow-sm">
+          <i class="bi bi-person-lines-fill me-2"></i>Ver Lista de Autores
+        </a>
+      </div>
+      <div class="col-md-4 d-none d-md-block text-center">
+        <i
+          class="bi bi-journal-bookmark-fill text-secondary"
+          style="font-size: 6rem;"
+        ></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4 justify-content-center">
+    <div class="col-md-4">
+      <div class="card h-100 border-0 shadow-sm bg-white p-3">
+        <div class="card-body">
+          <div
+            class="feature-icon bg-dark text-white rounded-3 p-3 d-inline-flex mb-3"
+          >
+            <i class="bi bi-people fs-4"></i>
+          </div>
+          <h3 class="fs-5 fw-bold text-dark">Control Total</h3>
+          <p class="text-muted small mb-0">
+            Visualiza el listado completo de autores registrados en el sistema
+            en tiempo real, garantizando la integridad de cada registro
+            académico.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100 border-0 shadow-sm bg-white p-3">
+        <div class="card-body">
+          <div
+            class="feature-icon bg-secondary text-white rounded-3 p-3 d-inline-flex mb-3"
+          >
+            <i class="bi bi-lightning-charge fs-4"></i>
+          </div>
+          <h3 class="fs-5 fw-bold text-dark">Interfaz Fluida</h3>
+          <p class="text-muted small mb-0">
+            Diseño totalmente responsivo desarrollado sobre Bootstrap 5.3,
+            optimizado tanto para equipos de escritorio como para dispositivos
+            móviles.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100 border-0 shadow-sm bg-white p-3">
+        <div class="card-body">
+          <div
+            class="feature-icon bg-dark text-white rounded-3 p-3 d-inline-flex mb-3"
+          >
+            <i class="bi bi-shield-check fs-4"></i>
+          </div>
+          <h3 class="fs-5 fw-bold text-dark">Estructura Sólida</h3>
+          <p class="text-muted small mb-0">
+            Arquitectura respaldada por el potente backend de Django, lo que
+            asegura un manejo de datos seguro, escalable y eficiente.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
