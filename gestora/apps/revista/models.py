@@ -3,6 +3,8 @@ from apps.common.models import ModeloAuditoria
 
 
 class Revista(ModeloAuditoria):
+    """Representa una revista que puede publicar varios artículos."""
+
     id_revista = models.BigAutoField(primary_key=True)
     nombre = models.CharField(max_length=200, unique=True, null=False, blank=False)
     issn = models.CharField(max_length=9, unique=True, null=False, blank=False)
@@ -16,4 +18,5 @@ class Revista(ModeloAuditoria):
         ordering = ("nombre",)
 
     def __str__(self) -> str:
+        """Muestra el nombre y el ISSN en formularios y administración."""
         return f"{self.nombre} ({self.issn})"

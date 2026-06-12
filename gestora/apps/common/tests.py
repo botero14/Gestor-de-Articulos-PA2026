@@ -1,3 +1,10 @@
 from django.test import TestCase
 
-# Create your tests here.
+
+class PaginaNoEncontradaTests(TestCase):
+    def test_ruta_inexistente_muestra_pagina_404(self):
+        response = self.client.get("/esta-ruta-no-existe/")
+
+        self.assertEqual(response.status_code, 404)
+        self.assertTemplateUsed(response, "404.html")
+        self.assertContains(response, "Página no encontrada", status_code=404)

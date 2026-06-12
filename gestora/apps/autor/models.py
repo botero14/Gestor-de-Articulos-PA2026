@@ -4,6 +4,8 @@ from apps.common.models import ModeloAuditoria
 
 
 class Autor(ModeloAuditoria):
+    """Representa un autor almacenado en la tabla ``autor``."""
+
     class Sexo(models.TextChoices):
         MASCULINO = "M", "Masculino"
         FEMENINO = "F", "Femenino"
@@ -20,10 +22,13 @@ class Autor(ModeloAuditoria):
         ordering = ("apellido", "nombre")
 
     def __str__(self) -> str:
+        """Devuelve el nombre legible que Django muestra en formularios."""
         return f"{self.nombre} {self.apellido}"
 
 
 class PerfilAutor(ModeloAuditoria):
+    """Almacena la información adicional asociada a un único autor."""
+
     id_perfil = models.BigAutoField(primary_key=True)
 
     autor = models.OneToOneField(
@@ -46,4 +51,5 @@ class PerfilAutor(ModeloAuditoria):
         db_table = "perfil_autor"
 
     def __str__(self) -> str:
+        """Devuelve una descripción legible del perfil."""
         return f"Perfil: {self.autor}"

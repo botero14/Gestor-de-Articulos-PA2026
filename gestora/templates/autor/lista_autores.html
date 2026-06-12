@@ -2,7 +2,10 @@
 <div class="container mt-4">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="text-dark fw-bold mb-0"> Autores Registrados</h2>
-    <a href="/autor/crear/" class="btn btn-dark fw-bold shadow-sm">
+    <a
+      href="{% url 'autor:crear_autor' %}"
+      class="btn btn-dark fw-bold shadow-sm"
+    >
       Agregar Autor</a
     >
   </div>
@@ -41,13 +44,13 @@
 
           <td class="text-center pe-3">
             <a
-              href="/autor/editar/{{ autor.id_autor }}/"
+              href="{% url 'autor:editar_autor' autor.id_autor %}"
               class="btn btn-warning btn-sm me-1 fw-medium shadow-sm"
             >
               Editar
             </a>
             <a
-              href="/autor/eliminar/{{ autor.id_autor }}/"
+              href="{% url 'autor:eliminar_autor' autor.id_autor %}"
               class="btn btn-danger btn-sm fw-medium shadow-sm"
             >
               Eliminar
@@ -67,7 +70,9 @@
   </div>
 
   <div class="mt-4">
-    <a href="/" class="btn btn-dark shadow-sm">Volver al inicio</a>
+    <a href="{% url 'index' %}" class="btn btn-dark shadow-sm"
+      >Volver al inicio</a
+    >
   </div>
 </div>
 {% endblock %}

@@ -19,6 +19,8 @@ def ruta_pdf_articulo(instancia: "Articulo", nombre_archivo: str) -> str:
 
 
 class Articulo(ModeloAuditoria):
+    """Representa un artículo, su revista y el archivo PDF publicado."""
+
     id_articulo = models.BigAutoField(primary_key=True)
     titulo = models.CharField(max_length=250, null=False, blank=False)
     resumen = models.TextField(null=False, blank=False)
@@ -50,6 +52,7 @@ class Articulo(ModeloAuditoria):
         ]
 
     def __str__(self) -> str:
+        """Usa el título como representación legible del artículo."""
         return self.titulo
 
 
@@ -81,4 +84,5 @@ class ArticuloAutor(ModeloAuditoria):
         ]
 
     def __str__(self) -> str:
+        """Describe la relación y el orden ocupado por el autor."""
         return f"{self.articulo} - {self.autor} (orden={self.orden_autor})"

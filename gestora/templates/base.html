@@ -14,7 +14,9 @@
   <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-4">
       <div class="container-fluid px-4">
-        <a class="navbar-brand fw-bold" href="/">Gestor de Artículos</a>
+        <a class="navbar-brand fw-bold" href="{% url 'index' %}"
+          >Gestor de Artículos</a
+        >
         <button
           class="navbar-toggler"
           type="button"
@@ -45,20 +47,26 @@
                 aria-labelledby="navbarAutores"
               >
                 <li>
-                  <a class="dropdown-item" href="/autor/lista/"
+                  <a
+                    class="dropdown-item"
+                    href="{% url 'autor:lista_autores' %}"
                     >Consultar autores</a
                   >
                 </li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
-                  <a class="dropdown-item" href="/autor/crear/">Crear autor</a>
+                  <a
+                    class="dropdown-item"
+                    href="{% url 'autor:crear_autor' %}"
+                    >Crear autor</a
+                  >
                 </li>
               </ul>
             </li>
 
             <li class="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle text-white-50"
+                class="nav-link dropdown-toggle text-white fw-semibold"
                 href="#"
                 id="navbarArticulos"
                 role="button"
@@ -72,16 +80,26 @@
                 aria-labelledby="navbarArticulos"
               >
                 <li>
-                  <a class="dropdown-item" href="#">Consultar artículo</a>
+                  <a
+                    class="dropdown-item"
+                    href="{% url 'articulo:lista_articulos' %}"
+                    >Consultar artículos</a
+                  >
                 </li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="#">Crear artículo</a></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="{% url 'articulo:crear_articulo' %}"
+                    >Crear artículo</a
+                  >
+                </li>
               </ul>
             </li>
 
             <li class="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle text-white-50"
+                class="nav-link dropdown-toggle text-white fw-semibold"
                 href="#"
                 id="navbarRevistas"
                 role="button"
@@ -94,10 +112,20 @@
                 aria-labelledby="navbarRevistas"
               >
                 <li>
-                  <a class="dropdown-item" href="#">Consultar revista</a>
+                  <a
+                    class="dropdown-item"
+                    href="{% url 'revista:lista_revistas' %}"
+                    >Consultar revistas</a
+                  >
                 </li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="#">Crear revista</a></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="{% url 'revista:crear_revista' %}"
+                    >Crear revista</a
+                  >
+                </li>
               </ul>
             </li>
           </ul>
